@@ -12,6 +12,7 @@ RUN set -x \
     && apk add --no-cache \
       linux-pam \
       tini \
+      bash \
     && apk add --no-cache -t .build-deps \
       build-base \
       curl \
@@ -32,4 +33,5 @@ COPY docker-entrypoint.sh /
 
 EXPOSE 1080
 
-ENTRYPOINT ["/sbin/tini", "--", "/docker-entrypoint.sh"]
+#CMD ["/sbin/tini", "--", "/docker-entrypoint.sh"]
+CMD ["/docker-entrypoint.sh"]

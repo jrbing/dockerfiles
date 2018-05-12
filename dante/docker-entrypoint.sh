@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #===============================================================================
 # vim: softtabstop=2 shiftwidth=2 expandtab fenc=utf-8 spelllang=en ft=sh
 #===============================================================================
@@ -15,6 +15,6 @@ set -e          # Exit immediately on error
 set -u          # Treat unset variables as an error
 set -o pipefail # Prevent errors in a pipeline from being masked
 
-printf "${PASSWORD}\n${PASSWORD}\n" | adduser ${USERNAME}
+id -u "${USERNAME}" &>/dev/null || printf "${PASSWORD}\n${PASSWORD}\n" | adduser "${USERNAME}"
 
 sockd
