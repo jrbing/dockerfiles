@@ -8,4 +8,11 @@ LABEL maintainer="JR Bing <jr@jrbing.com>" \
 
 RUN set -x && \
     apk add --no-cache --update \
-      php7-pdo_pgsql
+      postgresql-client \
+      php7-pdo_pgsql \
+    && \
+    sed -i "s/;date.timezone =/date.timezone = \"America\/New_York\"/g" /etc/php7/php.ini
+
+COPY ./conf/spotweb /app
+
+COPY rootfs /
