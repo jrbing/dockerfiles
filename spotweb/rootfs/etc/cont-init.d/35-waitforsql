@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+database_host="${DB_HOST:-database}"
+database_port="${DB_PORT:-3306}"
+
+until nc -z -v -w30 $database_host $database_port
+do
+  echo "Waiting for database connection at host '$database_host:$database_port'..."
+  sleep 2
+done
