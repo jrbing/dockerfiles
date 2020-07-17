@@ -1,7 +1,5 @@
-# https://example.com
-#
-# vim:set et ft=Dockerfile sw=2 ts=2 tw=80:
-#
+#!/bin/sh
+
 # To build:
 #   docker buildx build --platform linux/arm64/v8 -t nextdns-udm:latest .
 #
@@ -37,8 +35,7 @@ RUN wget -O /tmp/nextdns.tar.gz https://github.com/nextdns/nextdns/releases/down
 
 FROM arm64v8/alpine:latest
 
-RUN apk add --no-cache \
-      ca-certificates
+RUN apk add --no-cache ca-certificates
 
 COPY --from=builder /tmp/nextdns /opt/nextdns
 
