@@ -2,7 +2,7 @@
 # vim:set et ft=Dockerfile sw=2 ts=2 tw=80:
 #
 # To build:
-#   docker build -t image-name .
+#   docker build -t pvc-sync .
 
 FROM alpine:latest
 
@@ -20,4 +20,4 @@ RUN apk -U update && \
         bash \
         rsync
 
-CMD rsync -apvH /srcd/ /dest/
+CMD rsync -apvH /src/ /dest/
